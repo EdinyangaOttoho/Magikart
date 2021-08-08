@@ -60,7 +60,11 @@
                     <h4 style="margin-top:40px">My artworks</h4>
                 </div>
                 <div class="sb2-2-3">
-                    <div class="row">
+                    <div style="display:flex;margin-bottom:20px">
+                        <input type="text" class="form-control" placeholder="Search for an artwork" oninput="search(this.value)">
+                        <button class="btn btn-secondary btn-sm"><i class="fa fa-search"></i></button>   
+                    </div>
+                    <div class="row" id="projects">
                     <?php
                         $arts = mysqli_query($db, "SELECT * FROM artworks WHERE username = '$user->username' ORDER BY id DESC LIMIT 10");
                         while ($r = mysqli_fetch_array($arts)) {
@@ -120,5 +124,28 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+        let search = (x)=>{
+            document.getElementById("projects").innerHTML = `
+                <div class="col-sm-12" style="height:60vh">
+                    <center><i class="fa fa-spinner fa-spin text-primary fa-2x"></i></center>
+                </div>
+            `;
+            let xhttp;
+            if (XMLHttpRequest) {
+                xhttp = new XMLHttpRequest();
+            }
+            else {
+                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("projects").innerHTML = xhttp.responseText;
+                }
+            }
+            xhttp.open("GET", `config.php?search=${x}&dt=${new Date().toString()}`, true);
+            xhttp.send();
+        }
+    </script>
 </body>
 </html>

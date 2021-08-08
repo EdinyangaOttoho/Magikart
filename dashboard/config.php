@@ -115,4 +115,66 @@
 			header("location:./projects.php");
 		}
 	}
+	else if (isset($_GET["search"])) {
+		$q = mysqli_real_escape_string($db, $_GET["search"]);
+		$query = [];
+
+		//advanced search algorithm
+		if (strpos($_GET["search"], " ") !== false) {
+			$query = explode(" ", $q);
+		}
+		else {
+			$query[0] = $q;
+		}
+		$query_array = [];
+		foreach ($query as $i) {
+			array_push($query_array, "title LIKE '%$i%'");
+		}
+		$query_string = implode(" OR ", $query_array);
+		$sql = "";
+		
+		if (trim($q) == "") {
+			$sql = "SELECT * FROM artworks WHERE username = '$username' ORDER BY id DESC LIMIT 10";
+		}
+		else {
+			$sql = "SELECT * FROM artworks WHERE username = '$username' AND ($query_string)";
+		}
+		
+		$arts = mysqli_query($db, $sql);
+		while ($r = mysqli_fetch_array($arts)) {
+			?>
+			<div class="col-md-6">
+				<div class="box-inn-sp">
+					<div class="inn-title">
+						<h4><?php echo $r["title"]; ?></h4>
+						<a class='dropdown-button drop-down-meta' href='#' data-activates='dropdown1'><i class="material-icons">more_vert</i></a>
+						<!-- Dropdown Structure -->
+						<ul id='dropdown1' class='dropdown-content'>
+							<li><a href="<?php echo $r["photo"]; ?>">View</a>
+							</li>
+							<li><a href="./config.php?delete_art=<?php echo $r['id']; ?>">Delete</a>
+							</li>
+							<li><a href="<?php echo $r['photo']; ?>" download><i class="fa fa-download"></i> Download</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-inn" style="background-image:url('<?php echo $r['photo']; ?>')">
+						
+					</div>
+				</div>
+			</div>
+			<?php
+		}
+		if (mysqli_num_rows($arts) == 0) {
+			?>
+			<div class="col-sm-12">
+				<center>
+					<div style="height:70vh">
+						<i class="fa fa-search"></i> No results matching your search term!
+					</div>
+				</center>
+			</div>
+			<?php
+		}
+	}
 ?>
