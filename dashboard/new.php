@@ -174,7 +174,7 @@
 					arr[1] = dat[i + 1];
 					arr[2] = dat[i + 2];
 					let mean = Math.round((arr[0]+arr[1]+arr[2])/3);
-					if (mean >= 178) {
+					if (mean >= 160) {
 						arr[0] = 255;
 						arr[1] = 255;
 						arr[2] = 255;
