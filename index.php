@@ -12,6 +12,12 @@
 
 <link href="img/logo.png" rel="shortcut icon"/>
 
+<style>
+	a[href="https://www.000webhost.com/?utm_source=000webhostapp&utm_campaign=000_logo&utm_medium=website&utm_content=footer_img"] {
+		display:none;
+	}
+</style>
+
 <meta name="description" content="Magikart is an online platform that converts paper art to digital art"/>
 
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&amp;display=swap" rel="stylesheet">

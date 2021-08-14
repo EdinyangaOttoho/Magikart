@@ -11,3 +11,9 @@ $auth0 = new Auth0\SDK\Auth0([
 ]);
 
 $auth0->login();
+?>
+<style>
+    a[href="https://www.000webhost.com/?utm_source=000webhostapp&utm_campaign=000_logo&utm_medium=website&utm_content=footer_img"] {
+		display:none;
+	}
+</style>

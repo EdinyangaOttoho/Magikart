@@ -44,4 +44,7 @@
         height:60vh;
         width:100%
     }
+    a[href="https://www.000webhost.com/?utm_source=000webhostapp&utm_campaign=000_logo&utm_medium=website&utm_content=footer_img"] {
+		display:none;
+	}
 </style>
