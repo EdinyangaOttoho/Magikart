@@ -10,6 +10,10 @@ To use the project, simply create a Database, upload the .sql file therein the r
 ### Auth0 configuration
 Make sure to setup the Auth0 configurations using the .env.example sample provided in the project such as the CLIENT_ID, DOMAIN, CLIENT_SECRET, CALLBACK_URL etc.
 
+Make sure also, that the settings provided are updated in the Auth0 dashboard. You can check the docs on how to do that;
+
+https://auth0.com/docs/quickstart/webapp/php
+
 #### Pro tip: Most preferrably, setup a virtual host for the project
 
 And viola! The project is setup successfully!
