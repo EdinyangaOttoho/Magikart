@@ -60,7 +60,7 @@
                     <h4 style="margin-top:40px">My artworks</h4>
                 </div>
                 <div class="sb2-2-3">
-                    <div style="display:flex;margin-bottom:20px">
+                    <div style="display:flex">
                         <input type="text" class="form-control" placeholder="Search for an artwork" oninput="search(this.value)">
                         <button class="btn btn-secondary btn-sm"><i class="fa fa-search"></i></button>   
                     </div>
@@ -69,13 +69,13 @@
                         $arts = mysqli_query($db, "SELECT * FROM artworks WHERE username = '$user->username' ORDER BY id DESC LIMIT 10");
                         while ($r = mysqli_fetch_array($arts)) {
                             ?>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="margin-top:40px">
                                 <div class="box-inn-sp">
                                     <div class="inn-title">
                                         <h4><?php echo $r["title"]; ?></h4>
-                                        <a class='dropdown-button drop-down-meta' href='#' data-activates='dropdown1'><i class="material-icons">more_vert</i></a>
+                                        <a class='dropdown-button drop-down-meta' href='#' data-activates='dropdown<?php echo $r['id']; ?>'><i class="material-icons">more_vert</i></a>
                                         <!-- Dropdown Structure -->
-                                        <ul id='dropdown1' class='dropdown-content'>
+                                        <ul id='dropdown<?php echo $r['id']; ?>' class='dropdown-content'>
                                             <li><a href="<?php echo $r["photo"]; ?>">View</a>
                                             </li>
                                             <li><a href="./config.php?delete_art=<?php echo $r['id']; ?>">Delete</a>

@@ -94,9 +94,9 @@
                                                     <div class="box-inn-sp">
                                                         <div class="inn-title">
                                                             <h4><?php echo $r["title"]; ?></h4>
-                                                            <a class='dropdown-button drop-down-meta' href='#' data-activates='dropdown1'><i class="material-icons">more_vert</i></a>
+                                                            <a class='dropdown-button drop-down-meta' href='#' data-activates='dropdown<?php echo $r['id']; ?>'><i class="material-icons">more_vert</i></a>
                                                             <!-- Dropdown Structure -->
-                                                            <ul id='dropdown1' class='dropdown-content'>
+                                                            <ul id='dropdown<?php echo $r['id']; ?>' class='dropdown-content'>
                                                                 <li><a href="<?php echo $r["photo"]; ?>">View</a>
                                                                 </li>
                                                                 <li><a href="./config.php?delete_art=<?php echo $r['id']; ?>">Delete</a>
