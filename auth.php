@@ -1,5 +1,7 @@
 <?php
+
 @session_start();
+/*
 include("./task.php");
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/dotenv-loader.php';
@@ -18,6 +20,12 @@ $user_account = (object) [
     "username"=>$user->nickname,
     "email"=>$user->name,
     "profile_picture"=>$user->picture
+];
+*/
+$user_account = (object) [
+    "username"=>"Zucky",
+    "email"=>"elzucky@gmail.com",
+    "profile_picture"=>"https://driftbattles.app/img/logo.png"
 ];
 $_SESSION["user"] = encrypt(json_encode($user_account));
 header("location:./dashboard/");
