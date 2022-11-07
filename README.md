@@ -4,6 +4,15 @@ Converts paper drawn arts to digital arts
 ## Usage
 Below are the prerequisites for running the Magikart project;
 
+### Setup
+Clone this repository
+
+Navigate to the root directory and run the composer install command to install dependencies.
+
+```php 
+    composer install
+```
+
 ### Database connection
 To use the project, simply create a Database, upload the .sql file therein the root directory of this project named artworks.sql. Once that is done, update your connection in the .env file, as shown in the .env.example file.
 
